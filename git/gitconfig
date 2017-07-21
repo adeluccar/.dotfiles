@@ -1,0 +1,21 @@
+[user]
+  name = Alberto De Lucca
+  email = albertodelucca@gmail.com
+[core]
+  editor = vim
+  excludesfile = /Users/alberto/.gitignore_global
+[push]
+  default = simple
+[alias]
+  cm = !git add -A && git commit -m
+  co = checkout
+  cob = checkout -b
+  down = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  ec = config --global -e
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  undo = reset HEAD~1 --mixed
+  wip = commit -am "WIP"
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  jam = !git rebase -i `git merge-base HEAD master`
+[github]
+  user = adeluccar

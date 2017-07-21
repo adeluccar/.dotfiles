@@ -1,0 +1,13 @@
+"---------- do not change order below
+set nocompatible "stops vim from behaving in a vi-compatible way (modern vim plugins typically require this)
+so ~/.dotfiles/vim/vundle.vim "source this before the filetype detection below
+filetype plugin indent on "enable filetype detection
+"---------- do not change order above
+
+so ~/.dotfiles/vim/options.vim
+so ~/.dotfiles/vim/set.vim
+so ~/.dotfiles/vim/autocmd.vim
+so ~/.dotfiles/vim/functions.vim
+so ~/.dotfiles/vim/mappings.vim
+so ~/.dotfiles/vim/plugins.vim
+so ~/.dotfiles/vim/visual.vim

@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+dir=~/.dotfiles
+files=""
+
+for file in $files;do
+  rm ~/.$file
+  echo "Creating symlink to $file in home directory."
+  ln -sf $dir/$file ~/.$file
+done
+
+ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/ruby/ruby-version ~/.ruby-version
+ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -sf ~/.dotfiles/vim/vimrc ~/.vimrc
+ln -sf ~/.dotfiles/ruby/gemrc ~/.gemrc
+ln -sf ~/.dotfiles/tmux/tmux ~/.tmux.conf
+ln -sf ~/.dotfiles/node/version ~/.nodenv/version

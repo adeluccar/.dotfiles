@@ -1,0 +1,28 @@
+# For adding project wikis with repos of their own
+
+wiki/
+
+# Ignore vendor/ruby directory for ruby projects
+vendor/ruby
+
+# Ignore .bundle config directory
+.bundle/
+
+# Remove the "project references" folder for my own projects
+project\ references/
+
+# Logs and databases
+
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

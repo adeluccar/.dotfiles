@@ -1,0 +1,55 @@
+set -g default-terminal "screen-256color"
+set -g prefix C-a
+unbind C-b
+set -g escape-time 1
+bind r source-file ~/.tmux.conf \; display ".tmux.conf Sourced!"
+bind C-a send-prefix
+bind \ split-window -h -c '#{pane_current_path}'
+bind - split-window -v -c '#{pane_current_path}'
+bind c new-window -c '#{pane_current_path}'
+
+# smart pane switching with awareness of vim splits
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# status bar style
+set -g status-fg white
+set -g status-bg blue
+
+# status bar active windows style
+set -g window-status-current-fg blue
+set -g window-status-current-bg white
+
+set -g pane-active-border-fg blue
+set -g pane-border-fg black
+
+# status bar center window list
+set -g status-justify centre # window list in the middle of status bar
+
+# windows and pane numbering starts at 1
+set -g base-index 1
+set -g pane-base-index 1
+
+set-window-option -g mode-keys vi
+
+# monitor activity in other windows
+setw -g monitor-activity on
+set -g visual-activity on
+
+# TMUX PLUGIN MANAGER
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
