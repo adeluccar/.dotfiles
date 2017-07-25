@@ -2,19 +2,19 @@ new_project() {
 #!/bin/bash
 
 cat > README.md <<'EOF'
-# ## Project Name
+## Project Name
 
 TODO: Write a project description
 
-# ### Installation
+### Installation
 
 TODO: Describe the installation process
 
-# ### Usage
+### Usage
 
 TODO: Write usage instructions
 
-# ### Contributing
+### Contributing
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -22,15 +22,15 @@ TODO: Write usage instructions
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-# ### History
+### History
 
 TODO: Write history
 
-# ### Credits
+### Credits
 
 TODO: Write credits
 
-# ### License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 EOF
