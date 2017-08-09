@@ -21,9 +21,29 @@ bootmeup () {
     return 1
   fi
 
+  # add basic package.json
+  echo 'Adding basic package.json file'
+  cat > package.json <<EOF
+{
+  "name": "$1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alberto De Lucca",
+  "license": "MIT"
+}
+EOF
+  echo 'Added package.json'
+  echo ''
 
   # prepare project dirs
-  mkdir src dist
+  echo 'Adding placeholder directories...'
+  mkdir src
+  echo 'Added src/ dir.'
+  echo ''
 
   # install eslint
   echo 'Installing eslint...'
@@ -42,11 +62,14 @@ bootmeup () {
   echo 'Installed eslint peer dependencies.'
 
   # configure eslint (standard js style)
+  echo 'Configuring eslint (StandardJS)...'
   cat > .eslintrc.json <<'EOF'
 {
-  "extends": "airbnb-base"
+  "extends": "standard"
 }
 EOF
+  echo 'Configured eslint (StandardJS).'
+  echo ''
 
   # install babel
   echo 'Installing Babel...'
@@ -54,13 +77,18 @@ EOF
   echo 'Installed Babel.'
   echo ''
 
-  # configure babelrc to use es2016
+  # configure babelrc to use env preset
+  echo 'Configuring Babel (env preset)...'
   cat > .babelrc <<'EOF'
 {
-  "presets": ["es2016"]
+  "presets": ["env"]
 }
 EOF
+  echo 'Configured Babel (env preset).'
+  echo ''
 
+  # add gitignore
+  echo "Adding gitignore..."
   cat > .gitignore <<'EOF'
 # Logs
 logs
@@ -124,4 +152,5 @@ typings/
 # distribution and build files
 dist/
 EOF
+  echo "Added .gitignore."
 }
