@@ -2,7 +2,7 @@ peer_my_npm () {
   export PKG=$1;
   npm info "$PKG@latest" peerDependencies --json |\
     command sed 's/[\{\},]//g ; s/: /@/g' |\
-    xargs npm install --save"$2" "$PKG@latest"
+    xargs pnpm install --save"$2" "$PKG@latest"
 }
 
 bootmeup () {
@@ -11,8 +11,20 @@ bootmeup () {
   mkdir src dist
 
   # install eslint
-  yarn add eslint@^3.19.0 --tilde -D
-  yarn add eslint-plugin-import eslint-config-airbnb-base -D
+  echo 'Installing eslint...'
+  pnpm install --save-dev eslint-config-standard \
+    eslint-plugin-standard eslint-plugin-promise \
+    eslint-plugin-import eslint-plugin-node
+  echo 'Installed eslint.'
+  echo ''
+
+  # fix eslint dependencies
+  echo 'Installing eslint peer dependencies...'
+  peer_my_npm eslint-config-standard -dev
+  peer_my_npm eslint-plugin-standard -dev
+  peer_my_npm eslint-plugin-import -dev
+  peer_my_npm eslint-plugin-node -dev
+  echo 'Installed eslint peer dependencies.'
 
   # configure eslint (standard js style)
   cat > .eslintrc.json <<'EOF'
@@ -22,7 +34,10 @@ bootmeup () {
 EOF
 
   # install babel
-  yarn add babel-core babel-preset-es2015 -D
+  echo 'Installing Babel...'
+  pnpm install --save-dev babel-core babel-preset-env
+  echo 'Installed Babel.'
+  echo ''
 
   # configure babelrc to use es2016
   cat > .babelrc <<'EOF'
