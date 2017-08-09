@@ -6,6 +6,21 @@ peer_my_npm () {
 }
 
 bootmeup () {
+  if (( $# < 1 )); then
+    echo 'usage: bootmeup [name]' >&2
+    return 1
+  fi
+
+  if ! [ -x "$(command -v pnpm)" ]; then
+    echo 'Error: pnpm is not installed.' >&2
+    return 1
+  fi
+
+  if ! [ -x "$(command -v peer_my_npm)" ]; then
+    echo 'Error: peer_my_npm is not installed.' >&2
+    return 1
+  fi
+
 
   # prepare project dirs
   mkdir src dist
