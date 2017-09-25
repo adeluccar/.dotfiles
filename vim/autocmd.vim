@@ -30,3 +30,11 @@ augroup save_when_leaving_buffer
   autocmd BufLeave * silent! :wa
   autocmd FocusLost * silent! :wa
 augroup END
+
+"set relative numbers in Normal Mode and
+"set absolute numbers in Insert Mode
+augroup toggle_relative_numbers
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END

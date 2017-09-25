@@ -8,7 +8,8 @@ set incsearch       "search as you type
 set nobackup        "do not create back up files (commit often to git)
 set noswapfile      "do not create a swap file (commit often to git)
 set nrformats=      "treat all numerals as decimals regardless of whether they are padded with zeros
-set number          "show line numbers
+set number          "show hybrid line numbers
+set relativenumber  "show relative line numbers
 set scrolloff=3     "when screen is scrolled - cursor is mantained mid-screen
 set shiftwidth=2    "how many columns is text indented with reindent operations
 set smartcase       "if lowercase search then matches all cases - if search in upcase then matches case
